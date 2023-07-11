@@ -4,7 +4,10 @@ const AppLogic = () => {
     const [seconds, setSeconds] = useState(0);
     const [minutes, setMinutes] = useState(0);
     const [active, setActive] = useState(false);
-    const [status, setStatus] = useState(0)
+    const [status, setStatus] = useState(0);
+    const [totalSeconds, setTotalSeconds] = useState(0);
+
+// ОСНОВНОЙ ФУНКЦИОНАЛ
 
     useEffect(() => {
 
@@ -28,6 +31,8 @@ const AppLogic = () => {
             }
         }, [active, seconds, minutes]);
 
+// КНОПКИ
+
     const handleStart = useCallback(() => {
         setActive(!active);
         setStatus(1)
@@ -50,15 +55,26 @@ const AppLogic = () => {
         setMinutes(0);
     }, [active]);
 
+// ЧЕНДЖЕРЫ
+
     const handleMinutesChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
         const newMinutes = parseInt(event.target.value)
         setMinutes(newMinutes);
+        setTotalSeconds(newMinutes * 60 + seconds);
     }, [minutes]);
 
     const handleSecondsChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
         const newSeconds = parseInt(event.target.value)
         setSeconds(newSeconds);
-    }, [seconds])
+        setTotalSeconds(minutes * 60 + newSeconds);
+    }, [seconds]);
+
+    const handleSliderChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+        const totalSeconds = parseInt(event.target.value, 10);
+        setTotalSeconds(totalSeconds);
+        setMinutes(Math.floor(totalSeconds / 60));
+        setSeconds(totalSeconds % 60);
+    },[minutes]);
 
     return(
         {
@@ -71,7 +87,9 @@ const AppLogic = () => {
             handleContinue,
             handleReset,
             handleMinutesChange,
-            handleSecondsChange
+            handleSecondsChange,
+            handleSliderChange,
+            totalSeconds
         }
     )
 }

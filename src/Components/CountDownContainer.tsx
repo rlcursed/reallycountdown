@@ -18,6 +18,8 @@ const CountDownContainer = () => {
             handlePause,
             handleContinue,
             handleReset,
+            handleSliderChange,
+            totalSeconds
     } = AppLogic()
 
     
@@ -29,6 +31,8 @@ const CountDownContainer = () => {
                 active={active}
                 seconds={seconds}
                 minutes={minutes}
+                handleSliderChange={handleSliderChange}
+                totalSeconds={totalSeconds}
                 />
                 <ButtonGroup
                 handleStart={handleStart}

@@ -2,6 +2,8 @@ import React from "react";
 import AppLogic from "./applogic";
 import Inputs from "./InputFolder/Inputs";
 import { InputsContainer } from "./CountDownStyles";
+import SliderComponent from "./SliderFolder/SliderComponent";
+import { InputsStyleContainer } from "./CountDownStyles";
 
 interface CountDownInputsProps {
     active: boolean;
@@ -9,13 +11,17 @@ interface CountDownInputsProps {
     minutes: number;
     handleMinutesChange:(event: React.ChangeEvent<HTMLInputElement>) => void;
     handleSecondsChange:(event: React.ChangeEvent<HTMLInputElement>) => void;
+    handleSliderChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    totalSeconds: number;
 }
 
-const CountDownInputsLogic: React.FC<CountDownInputsProps> = ({active, seconds, minutes,handleMinutesChange, handleSecondsChange}) => {
+const CountDownInputsLogic: React.FC<CountDownInputsProps> = ({active, totalSeconds ,seconds, minutes,handleMinutesChange, handleSecondsChange, handleSliderChange}) => {
 
     return (
         <InputsContainer>
+        <InputsStyleContainer>
             <Inputs 
+            
                 title={"minutes"}
                 value={minutes > 10 ? minutes : "0" + minutes}
                 type="number"
@@ -29,6 +35,8 @@ const CountDownInputsLogic: React.FC<CountDownInputsProps> = ({active, seconds, 
                 onChange={handleSecondsChange}
                 disabled={active ? true : false}
                 />
+            </InputsStyleContainer>
+                <SliderComponent value={totalSeconds} disabled={active} onChange={handleSliderChange}  key={1} />
         </InputsContainer>
     )
 }

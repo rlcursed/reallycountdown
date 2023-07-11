@@ -15,6 +15,13 @@ export const InputsContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
+    flex-direction: column;
     gap:20px;
+`
+export const InputsStyleContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 20px;
 `
