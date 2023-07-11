@@ -1,6 +1,7 @@
 import React from "react";
 import AppLogic from "./applogic";
 import Inputs from "./InputFolder/Inputs";
+import { InputsContainer } from "./CountDownStyles";
 
 interface CountDownInputsProps {
     active: boolean;
@@ -13,7 +14,7 @@ interface CountDownInputsProps {
 const CountDownInputsLogic: React.FC<CountDownInputsProps> = ({active, seconds, minutes,handleMinutesChange, handleSecondsChange}) => {
 
     return (
-        <>
+        <InputsContainer>
             <Inputs 
                 title={"minutes"}
                 value={minutes > 10 ? minutes : "0" + minutes}
@@ -28,7 +29,7 @@ const CountDownInputsLogic: React.FC<CountDownInputsProps> = ({active, seconds, 
                 onChange={handleSecondsChange}
                 disabled={active ? true : false}
                 />
-        </>
+        </InputsContainer>
     )
 }
 
