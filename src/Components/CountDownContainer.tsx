@@ -4,6 +4,7 @@ import ButtonGroup from './ButtonsFolder/ButtonsGroup';
 import AppLogic from './applogic';
 import CountDownInputsLogic from './CountDownInputsLogic';
 import { AppContainer } from './CountDownStyles';
+import SliderComponent from './SliderFolder/SliderComponent';
 
 const CountDownContainer = () => {
 
@@ -31,9 +32,8 @@ const CountDownContainer = () => {
                 active={active}
                 seconds={seconds}
                 minutes={minutes}
-                handleSliderChange={handleSliderChange}
-                totalSeconds={totalSeconds}
                 />
+                <SliderComponent value={totalSeconds} disabled={active} onChange={handleSliderChange}  key={1} />
                 <ButtonGroup
                 handleStart={handleStart}
                 handlePause={handlePause}

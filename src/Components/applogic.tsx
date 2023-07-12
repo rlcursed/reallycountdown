@@ -1,11 +1,11 @@
 import React, {useCallback, useState, useEffect} from "react";
 
 const AppLogic = () => {
-    const [seconds, setSeconds] = useState(0);
-    const [minutes, setMinutes] = useState(0);
-    const [active, setActive] = useState(false);
-    const [status, setStatus] = useState(0);
-    const [totalSeconds, setTotalSeconds] = useState(0);
+    const [seconds, setSeconds] = useState<number>(0);
+    const [minutes, setMinutes] = useState<number>(0);
+    const [active, setActive] = useState<boolean>(false);
+    const [status, setStatus] = useState<number>(0);
+    const [totalSeconds, setTotalSeconds] = useState<number>(0);
 
 // ОСНОВНОЙ ФУНКЦИОНАЛ
 

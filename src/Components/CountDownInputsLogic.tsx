@@ -11,17 +11,14 @@ interface CountDownInputsProps {
     minutes: number;
     handleMinutesChange:(event: React.ChangeEvent<HTMLInputElement>) => void;
     handleSecondsChange:(event: React.ChangeEvent<HTMLInputElement>) => void;
-    handleSliderChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    totalSeconds: number;
 }
 
-const CountDownInputsLogic: React.FC<CountDownInputsProps> = ({active, totalSeconds ,seconds, minutes,handleMinutesChange, handleSecondsChange, handleSliderChange}) => {
+const CountDownInputsLogic: React.FC<CountDownInputsProps> = ({active, seconds, minutes,handleMinutesChange, handleSecondsChange}) => {
 
     return (
-        <InputsContainer>
+        <>
         <InputsStyleContainer>
             <Inputs 
-            
                 title={"minutes"}
                 value={minutes > 10 ? minutes : "0" + minutes}
                 type="number"
@@ -36,8 +33,7 @@ const CountDownInputsLogic: React.FC<CountDownInputsProps> = ({active, totalSeco
                 disabled={active ? true : false}
                 />
             </InputsStyleContainer>
-                <SliderComponent value={totalSeconds} disabled={active} onChange={handleSliderChange}  key={1} />
-        </InputsContainer>
+        </>
     )
 }
 
